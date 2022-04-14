@@ -389,7 +389,7 @@ class _VideoInfoState extends State<VideoInfo> {
       controller.addListener(_onControllerUpdate);
       controller.play();
       setState(() {
-        _isPlayingIndex2++;
+        videoInfo[index]['played'] = true;
       });
     });
   }
@@ -459,7 +459,7 @@ class _VideoInfoState extends State<VideoInfo> {
                 ),
               ]),
               Expanded(child: Container()),
-              _isPlayingIndex2 >= index
+              videoInfo[index]['played'] == true
                   ? Icon(Icons.check)
                   : Icon(Icons.circle_outlined)
             ],
