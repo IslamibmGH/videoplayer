@@ -83,9 +83,14 @@ class _VideoInfoState extends State<VideoInfo> {
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.arrow_back_ios,
-                                size: 20,
-                                color: color.AppColor.secondPageIconColor),
+                            IconButton(
+                              icon: Icon(Icons.arrow_back_ios,
+                                  size: 20,
+                                  color: color.AppColor.secondPageIconColor),
+                              onPressed: () {
+                                setState(() {});
+                              },
+                            ),
                             Expanded(child: Container()),
                             Icon(Icons.info_outline,
                                 size: 20,
@@ -194,8 +199,12 @@ class _VideoInfoState extends State<VideoInfo> {
                           child: Row(
                             children: [
                               InkWell(
-                                  onTap: () {
-                                    debugPrint('tapped');
+                                  onTap: () async {
+                                    setState(
+                                      () {
+                                        _playArea = false;
+                                      },
+                                    );
                                   },
                                   child: Icon(Icons.arrow_back_ios,
                                       size: 20,
@@ -406,7 +415,6 @@ class _VideoInfoState extends State<VideoInfo> {
             setState(() {
               if (_playArea == false) {
                 _playArea = true;
-                _played = true;
               }
             });
           },
